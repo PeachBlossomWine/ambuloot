@@ -114,8 +114,6 @@ windower.register_event('addon command', function (command, page, amount, ...)
                 if free_space < total_space then warning("You don't have enough available inventory space for this size of purchase.") return end
 
                 purchasing = true
-				-- log(remainder)
-				-- log(stack_value)
 				
                 for i = amount,0,-constructed_item.Stack do
                     
@@ -134,26 +132,7 @@ windower.register_event('addon command', function (command, page, amount, ...)
                 end
                 purchase_queue[#purchase_queue]["_unknown1"] = remainder
 				
-				-- local stacks_needed = math.ceil(amount / constructed_item.Stack)
-				-- for i = 1, stacks_needed do
-					-- purchase_queue[#purchase_queue + 1] = {
-						-- ["me"] = constructed_item.me,
-						-- ["Name"] = constructed_item.Name,
-						-- ["Target"] = constructed_item.Target,
-						-- ["Stack"] = constructed_item.Stack,
-						-- ["_unknown1"] = (i == stacks_needed) and remainder or stack_value,
-						-- ["Target Index"] = constructed_item["Target Index"],
-						-- ["Option Index"] = constructed_item["Option Index"],
-						-- ["Menu ID"] = constructed_item["Menu ID"],
-						-- ["Index"] = constructed_item.Index,
-						-- ["Zone"] = constructed_item.Zone,
-						-- ["Cost"] = constructed_item.Cost
-					-- }
-				-- end
-                
                 log("Buying "..amount.." of "..constructed_item.Name.." in "..#purchase_queue.." transaction(s).")
-				--log("Buying "..amount.." of "..constructed_item.Name.." in "..stacks_needed.." transaction(s).")
-				
                 --table.vprint(test_table)
                 return
             end
